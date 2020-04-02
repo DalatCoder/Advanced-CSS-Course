@@ -49,17 +49,17 @@ body {
   position: relative;
 }
 
-.logo-box {
+.header__logo-box {
   position: absolute;
   top: 4rem;
   left: 4rem;
 }
 
-.logo {
+.header__logo {
   height: 35px;
 }
 
-.heading-box {
+.header__heading-box {
   position: absolute;
   top: 40%;
   left: 50%;
@@ -73,7 +73,7 @@ body {
   margin-bottom: 6rem;
 }
 
-.heading-primary-main {
+.heading-primary--main {
   display: block;
   font-size: 6rem;
   font-weight: 400;
@@ -84,7 +84,7 @@ body {
   animation-timing-function: ease-out;
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
   display: block;
   font-size: 2rem;
   font-weight: 700;
@@ -145,7 +145,7 @@ body {
 
   transition: all 0.2s;
 
-  /* Make position of relative to positioning its :: after child element */
+  /* Make relative position to positioning its :: after child element */
   position: relative;
 }
 
@@ -154,12 +154,13 @@ body {
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
+/* Style click state */
 .btn:active {
   transform: translateY(-1px);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
-.btn-white {
+.btn--white {
   background-color: #fff;
   color: #777;
 }
@@ -167,24 +168,24 @@ body {
 .btn::after {
   content: ""; /* required for it to display */
 
-  /* Style the same as parent btn */
+  /* Style the same as the parent btn */
   display: inline-block;
-  /* Width and height relative to it parent btn */
+  /* Width and height are relative to its parent btn */
   width: 100%;
   height: 100%;
   border-radius: 10rem;
 
-  /* Make child behind its btn parent */
+  /* Make the child behinds its parent btn */
   z-index: -1;
   position: absolute;
   top: 0;
   left: 0;
 
-  /* Inital state of .btn:hover::after */
+  /* Initial state for .btn:hover::after */
   transition: all 0.4s;
 }
 
-.btn-white::after {
+.btn--white::after {
   background-color: #fff;
 }
 
@@ -196,7 +197,7 @@ body {
   opacity: 0;
 }
 
-.btn-animated {
+.btn--animated {
   animation-name: moveInBottom;
   animation-duration: 0.5s;
   animation-timing-function: ease-out;
