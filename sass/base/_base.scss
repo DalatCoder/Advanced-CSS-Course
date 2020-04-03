@@ -1,0 +1,19 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  // Root font-size for REM unit
+  // Allow user to change their browser font size
+  // 62.5% of the default 16px gives 10px
+
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}
