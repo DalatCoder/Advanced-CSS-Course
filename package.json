@@ -1,0 +1,23 @@
+{
+  "name": "Advanced-CSS-Course",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DalatCoder/Advanced-CSS-Course.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DalatCoder/Advanced-CSS-Course/issues"
+  },
+  "homepage": "https://github.com/DalatCoder/Advanced-CSS-Course#readme",
+  "devDependencies": {
+    "node-sass": "^4.13.1"
+  }
+}
