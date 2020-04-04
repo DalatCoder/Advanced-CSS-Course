@@ -13,29 +13,25 @@
     margin-bottom: $gutter-vertical;
   }
 
-  // .row .col-1-of-2
-  .col-1-of-2 {
-    // mixs units when use calc()
-    // Sass variables must be placed inside #{} to use calc() function in css
-    width: calc((100% - #{$gutter-horizontal}) / 2);
-    background-color: orange;
-    float: left;
-
-    // Every child expect the last child will have the horizontal gutter of $gutter-horizontal
-    &:not(:last-child) {
-      margin-right: $gutter-horizontal;
-    }
-  }
-
   // Select any class starts with "col-" inside the row container
   // .row [class^="col-"]
   [class^="col-"] {
     background-color: orange;
     float: left;
 
+    // .row col-1-of-2:not(:last-child)
+    // set the margin-right for every col- child expect the last one
+    // the last one doesn't need the horizontal gutter
     &:not(:last-child) {
       margin-right: $gutter-horizontal;
     }
+  }
+
+  // .row .col-1-of-2
+  .col-1-of-2 {
+    // mixs units when use calc() function in CSS
+    // Sass variables must be placed inside #{} to use calc() function in css
+    width: calc((100% - #{$gutter-horizontal}) / 2);
   }
 
   // .row .col-1-of-3
