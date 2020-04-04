@@ -1,0 +1,10 @@
+@mixin clearfix {
+  // current-path::after
+  // adds it to the parent which contains float elements
+  // @include clearfix
+  &::after {
+    content: "";
+    display: table;
+    clear: both; // clear on both float left and float right
+  }
+}
