@@ -1,0 +1,8 @@
+// Section about belongs to home page
+.section-about {
+  background-color: $color-gray-light;
+  padding: 25rem 0;
+
+  // Move up a little bit to fill out the triangle shape when we clip path the header section
+  margin-top: -20vh;
+}
