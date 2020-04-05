@@ -6,3 +6,32 @@
   // Move up a little bit to fill out the triangle shape when we clip path the header section
   margin-top: -20vh;
 }
+
+// Section features belongs to home page
+.section-features {
+  padding: 20rem 0;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url(../../img/nat-4.jpg);
+  background-size: cover;
+
+  // Make skewed design as section header
+  // We can use clip-path propery like section header
+  // Another trick is to use transform: skewY
+  // And then skewY every child of .section-features container to the opposite direction
+  transform: skewY(-7deg);
+
+  // Move up a little bit to cover the triangle shape
+  margin-top: -10rem;
+
+  // Fix the skewY in direct child of .section-features
+  // If someday we change the content inside of .section-features, it will automatically fix skewY
+  // Select direct child of .section-features and fix skewY on that child
+  // .section-features > row
+  & > * {
+    transform: skewY(7deg);
+  }
+}
