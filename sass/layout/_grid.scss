@@ -3,7 +3,6 @@
   // If the viewport width is below 1140px, it use 100% of the viewport
   // max-width: 114rem;
   width: $grid-width;
-  background-color: #eee;
   margin: 0 auto;
 
   // :not pseudo-class: select everything except ...
@@ -16,7 +15,6 @@
   // Select any class starts with "col-" inside the row container
   // .row [class^="col-"]
   [class^="col-"] {
-    background-color: orange;
     float: left;
 
     // .row col-1-of-2:not(:last-child)
