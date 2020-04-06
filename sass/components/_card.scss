@@ -1,0 +1,237 @@
+.card {
+  /*  =============== FUNTIONALITY =============== */
+  /*
+    The perspective CSS property gives an element a 3D-space by affecting the distance between the Z plane and the user.
+    The strength of the effect is determined by the value. The smaller the value, the closer you get from the Z plane and the more impressive the visual effect. The greater the value, the more subtle will be the effect.
+    Important: Please note the perspective property doesn’t affect how the element is rendered; it simply enables a 3D-space for children elements. This is the main difference between the transform: perspective() function and the perspective property. The first gives element depth while the later creates a 3D-space shared by all its transformed children.
+    => Set the perspective property on parrent element
+  */
+  perspective: 150rem; // 3D effect when the card rotated
+  -moz-perspective: 150rem;
+
+  // Make the parrent relative, so that we can position all the child absolutely (2 sides of the card)
+  position: relative;
+
+  // When all the child remove from normal flow (all of the child is positioning absolutely)
+  // The parrent colapse its height
+  // With floated, we fix via clearfix method
+  // With absolute, we must set the height of the parrent equal to the height of its child
+  height: 52rem;
+
+  // When we hover a card (parrent), we want the card__side to transform (child of card)
+  // Select the child card__side when hover the parrent card
+  // The front-side of the card should be rotated 180deg to the back (become back-side)
+  // And the back-side of the card should be rotated to the original position (become front-side)
+  // card:hover card__side
+  &:hover &__side--front {
+    transform: rotateY(-180deg);
+  }
+
+  &:hover &__side--back {
+    transform: rotateY(0);
+  }
+
+  &__side {
+    background-color: transparent;
+    height: 52rem;
+    width: 100%; // full width of it parrent (.card container)
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+    // The card__image overlapping the card__side, and it hide the top border-radius
+    // The card__image overflow its container
+    // So we hide the part of the image that overflowed out of the container
+    overflow: hidden;
+
+    transition: all 1s ease;
+
+    // Move 2 sides of the card to be on top of each other
+    // When 2 sides of the card be on top of each other,
+    // It becomes one final card, with one side appear at the time
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    // Hide the back face of the card--front and card--back
+    // Originally, the card--front and card--back are elements and have its own 2 sides
+    // However, a finally card only need the front side of card--front element and card--back element
+    // Front side of card--back element is already flipped at the beginning,
+    // so that it have become the back face of the final card element
+    backface-visibility: hidden;
+
+    // Front-side of a card
+    &--front {
+      background-color: $color-white;
+    }
+
+    // Back-side of a card
+    &--back {
+      // The back-side of the card always rotate Y 180deg at the beginning
+      transform: rotateY(180deg);
+
+      // Style the first modifier of the card back side
+      &-1 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        );
+      }
+      // Style the second modifier of the card back side
+      &-2 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        );
+      }
+      // Style the third modifier of the card back side
+      &-3 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        );
+      }
+    }
+  }
+
+  /*  =============== FRONT SIDE STYLING =============== */
+  &__picture {
+    // Set background-size for all other image to cover
+    // card__picture is the commonly class of three modifier class --1, --2, --3
+    background-size: cover;
+    height: 23rem;
+    background-blend-mode: screen;
+
+    // Clip out the card__image as same as the header__picture
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+    &--1 {
+      // The path at this _card.scss file is ../../img/nat-5.jpg
+      // However, the code will be compiled into style.css in /css folder
+      // so the path for style.css is ../img/nat-5.jpg
+      background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        ),
+        url(../img/nat-5.jpg);
+    }
+
+    &--2 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        ),
+        url(../img/nat-6.jpg);
+    }
+
+    &--3 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        ),
+        url(../img/nat-7.jpg);
+    }
+  }
+
+  &__heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: right;
+    color: $color-white;
+    width: 75%; // h2 display as block, so the width is 100% of its parrent
+
+    // Positioning the heading relative to the .card parrent
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+  }
+
+  &__heading-span {
+    padding: 1rem 1.5rem;
+
+    // When the heading breaks into new line due to the width is not enough
+    // The padding doesn't apply the correct way to each break line
+    // So we use box-decoration-break to style each break line properly
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+
+    &--1 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-secondary-light, 0.8),
+        rgba($color-secondary-dark, 0.8)
+      );
+    }
+    &--2 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)
+      );
+    }
+    &--3 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-tertiary-light, 0.8),
+        rgba($color-tertiary-dark, 0.8)
+      );
+    }
+  }
+
+  &__details {
+    padding: 3rem;
+
+    ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto;
+
+      li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $color-gray-light-1;
+        }
+      }
+    }
+  }
+
+  /*  =============== BACK SIDE STYLING =============== */
+  &__cta {
+    // Set the width of the box at 90% of its parrent (.card element)
+    width: 90%;
+    text-align: center;
+
+    // Positioning relative to its parrent (.card element)
+    position: absolute;
+
+    // Center on both vertical and horizontal
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__price-box {
+    margin-bottom: 8rem;
+    color: $color-white; // Inheritance
+  }
+
+  &__price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+  }
+
+  &__price-value {
+    font-size: 6rem;
+    font-weight: 100;
+  }
+}
