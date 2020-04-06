@@ -71,6 +71,18 @@
     }
   }
 
+  // .btn--green
+  &--green {
+    background-color: $color-primary;
+    color: $color-white;
+
+    // background color for after child element with white modifier
+    // .btn--white::after
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+
   // .btn--animated
   &--animated {
     animation-name: moveInBottom;
