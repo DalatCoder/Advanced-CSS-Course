@@ -35,3 +35,14 @@
     transform: skewY(7deg);
   }
 }
+
+// Section tours belongs to home page
+.section-tours {
+  background-color: $color-gray-light;
+
+  // Make padding bottom bigger for cards
+  padding: 25rem 0 15rem 0;
+
+  // Move up a little bit to cover the triangle shape
+  margin-top: -10rem;
+}
