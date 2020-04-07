@@ -1,0 +1,34 @@
+.bg-video {
+  // Use video for background so it must have the same dimension as its parrent
+  // Relative to its parrent (.section stories)
+  width: 100%;
+  height: 100%;
+
+  // Background video, so other elements are on top of it
+  z-index: -1;
+
+  // Clipped out those part that doesn't fit the container
+  overflow: hidden;
+
+  // Blur the background video so that all other elements on top of it
+  // can be see easier
+  opacity: 0.15;
+
+  // Relative to its parrent (.section stories)
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  // Set dimension of the video
+  &__content {
+    width: 100%;
+    height: 100%;
+
+    // Pretty similar to background-size: cover
+    // The video will fill the entire parrent width and height
+    // While sill maintaining the aspect ratio
+    // The part of video the dont't fit the container => clipped out
+    // Also work with image
+    object-fit: cover;
+  }
+}
