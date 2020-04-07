@@ -46,3 +46,11 @@
   // Move up a little bit to cover the triangle shape
   margin-top: -10rem;
 }
+
+// Section stories belongs to home page
+.section-stories {
+  padding: 15rem 0;
+
+  // Make this container relative to positioning its child absolutely
+  position: relative;
+}
