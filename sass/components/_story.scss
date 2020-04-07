@@ -1,0 +1,116 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+  background-color: rgba($color-white, 0.6);
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem; // 6rem + 3rem when the circle shape moves toward the left 3 rem
+  font-size: $default-font-size;
+
+  // SkewX on the story container
+  // Select direct child of its and give them skewX(12deg) to fix the problem
+  // However, the .story__shape already has the transform property
+  // and it takes precedent over transform: skewX(12deg)
+  // So we must manualy set skewX on each child of skewed container (.story)
+  transform: skewX(-12deg);
+
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+
+    // We can only float element if it has both width and heigth dimensions
+    float: left;
+
+    /*
+      The shape-outside property controls how content will wrap around a floated element’s bounding-box. Typically this is so that text can reflow over a shape such as a circle, ellipse or a polygon
+    */
+    // with radius of 50% relative to its height (15rem) and width (15rem)
+    // and at center of verticaly and center of horizontaly (50% 50%)
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%);
+
+    // Clip out the shape into the circle
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+
+    // When using float, the best practice is not to use margin or padding to move a element
+    // The best practice is to use transform with translateX or translateY
+    // SkewX(12deg) to fix the problem when we skewed the container (.story)
+    transform: translateX(-3rem) skewX(12deg);
+
+    // Define position as relative to positioning its child
+    position: relative;
+  }
+
+  &__img {
+    // Relative to its parrent (story__shape)
+    // Full width of its parrent width
+    // The picture is so wide, so when we define width: 100%, the height dimension doesn't fit properly
+    // So we define height: 100% to its parrent height, and the width will fit properly
+    height: 100%;
+
+    // Move the img toward the left side for perfectly display its main content
+    // Zoom out effect
+    // Set the initial state for greate scale
+    // and when hover, set scale property to its original dimension: scale(1)
+    transform: translateX(-4rem) scale(1.4);
+
+    // Initial state for animation
+    // Animation happes when we hover an entire story element
+    transition: all 0.5s;
+
+    // Use this property when occurs weird animation
+    // Weird animation happes when the image blur, so use this to fix problem
+    backface-visibility: hidden;
+  }
+
+  &__caption {
+    color: $color-white;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    text-align: center;
+
+    // Use this property when occurs weird animation
+    backface-visibility: hidden;
+
+    // Positioning the caption on top of the shape__img, center vertically and horizontally
+    // Relative to its parrent (.story__shape)
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    // transform: translate(-50%, -50%);
+    // We want the caption at the bottom, at when when hover the container (.story)
+    // it move in down to the center middle of its parrent (.story__shape)
+    transform: translate(-50%, 20%);
+
+    // The caption is not visible at the begining
+    // It only visible when we hover the story container
+    opacity: 0;
+
+    // Initial state for animation
+    // Animation happens on story__caption when we hover entire story element
+    transition: all 0.5s;
+  }
+
+  // When we hover the story, starts effect on story__caption
+  // Effect: moves in down to the center middle of its parrent
+  &:hover &__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  // Blur the image when we hover an entire story
+  &:hover &__img {
+    transform: translateX(-4rem) scale(1);
+
+    // Add blur and decrease lightness of the image
+    filter: blur(3px) brightness(80%);
+  }
+
+  &__text {
+    // Text is a direct child of the skewed container (.story)
+    // So we use skewX(12deg) to fix problem
+    transform: skewX(12deg);
+  }
+}
