@@ -1,5 +1,8 @@
 .btn {
   // .btn:link, .btn:visited
+  // The one at top for all, contain <button> element
+  // 2 below selector used for <a> only
+  &,
   &:link,
   &:visited {
     text-transform: uppercase;
@@ -13,6 +16,10 @@
 
     // Make relative position to positioning its :: after child element
     position: relative;
+
+    // Change for the <button> element
+    border: none;
+    cursor: pointer;
   }
 
   // styling after child for cool effect
@@ -54,7 +61,11 @@
 
   // click state
   // .btn:active
-  &:active {
+  // focus state for button
+  &:active,
+  &:focus {
+    outline: none; // for <button> only
+
     transform: translateY(-1px);
     box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
   }
