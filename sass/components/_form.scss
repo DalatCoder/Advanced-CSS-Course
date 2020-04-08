@@ -1,0 +1,144 @@
+.form {
+  &__group {
+    // Set the margin bottom of every child equal to 2rem except the last one
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__input {
+    // input doesn't inherit properties automatically
+    // so we use the inherit keyword to force inheritance
+    font-family: inherit;
+    color: inherit;
+
+    font-size: 1.5rem;
+    padding: 1.5rem 2rem;
+    border-radius: 3px;
+    background-color: rgba($color-white, 0.5);
+    border: none;
+
+    // Smooth animation when changing the boder-bottom color
+    transition: all 0.5s;
+
+    // When we focus an input, the border bottom will be 3px
+    // The element move down a little bit
+    // So to fix that problem, we set the border at init state to have the same border-width 3px
+    // But make it invisible by set its color to transparent
+    border-bottom: 3px solid transparent;
+
+    // Make display on its own line
+    display: block;
+    width: 90%;
+
+    // Style placeholder element in input
+    &::-webkit-input-placeholder {
+      color: $color-gray-dark-1;
+    }
+
+    // Style the input box when the user focus
+    &:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+      border-bottom: 3px solid $color-primary;
+    }
+
+    // Style the input box when the user focus and type invalid value (chrome validator)
+    &:focus:invalid {
+      border-bottom: 3px solid $color-secondary-dark;
+    }
+  }
+
+  &__label {
+    font-size: 1.2rem;
+    font-weight: 700;
+
+    // Align left with the text in input placeholder
+    margin-left: 2rem;
+    margin-top: 0.7rem;
+
+    display: block;
+
+    transition: all 0.5s;
+  }
+
+  // When the input placeholder is showns (meaning the user hasn't typed anything yet)
+  // So, we hide the input label
+  // Sibling selector
+  // + means select the sibling right after
+  // ~ means select the general sibling
+  // the form__input must be before the form__label in order (html source)
+  // other while, the sibling selector won't work
+  &__input:placeholder-shown + &__label {
+    opacity: 0; // for animation
+    visibility: hidden;
+    transform: translateY(-4rem);
+  }
+
+  &__radio-group {
+    // Make two radio button sit side by side
+    width: 49%;
+    display: inline-block;
+  }
+
+  &__radio-input {
+    // Hide the original radio button
+    display: none;
+  }
+
+  &__radio-label {
+    font-size: $default-font-size;
+    cursor: pointer;
+    padding-left: 4.5rem;
+
+    // Make relative to positioning its element absolutely
+    position: relative;
+  }
+
+  // Style our own radio button
+  &__radio-button {
+    // Style circle outline of the radio
+    height: 3rem;
+    width: 3rem;
+    border: 3px solid $color-primary;
+    border-radius: 50%;
+    display: inline-block;
+
+    // Vertical center the button
+    position: absolute;
+    left: 0;
+    top: -0.4rem;
+
+    // Style the filled circle inside
+    &::after {
+      content: "";
+      display: block;
+      height: 1.6rem;
+      width: 1.6rem;
+      border-radius: 50%;
+      background-color: $color-primary;
+
+      // The filled circle will be at the center of our own radio button
+      // Position absolutely
+      // The parrent don't have to be relative
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      // Hide the filled radio button at the beginning
+      opacity: 0;
+
+      // For animation
+      transition: all 0.2s;
+    }
+  }
+
+  // form__radio-input:checked + form__radio-label form__radio-button::after
+  // Fill out the circle inside when the original radio button is checked
+  // form__radio-button::after is the child of form__radio-label,
+  // first, we have use sibling selector
+  &__radio-input:checked + &__radio-label &__radio-button::after {
+    opacity: 1;
+  }
+}
