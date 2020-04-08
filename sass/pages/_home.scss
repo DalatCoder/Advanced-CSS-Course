@@ -54,3 +54,44 @@
   // Make this container relative to positioning its child absolutely
   position: relative;
 }
+
+// Section booking tour belongs to home page
+.section-book {
+  padding: 15rem 0;
+  background-image: linear-gradient(
+    to right bottom,
+    $color-primary-light,
+    $color-primary-dark
+  );
+}
+
+.book {
+  // Solid-color gradient
+  // Angle 105deg
+  // At the beginning 0%: the color is $color-white with alpha of 0.9
+  // At the middle 50%: the color still $color-white with alpha of 0.9
+  // At the middle 50% to end (100%): the color is transparent
+  // So, there is no mixed color, two color is seperated at the middle 50%
+  background-image: linear-gradient(
+      105deg,
+      rgba($color-white, 0.9) 0%,
+      rgba($color-white, 0.9) 50%,
+      transparent 50%
+    ),
+    url(../img/nat-10.jpg);
+
+  // background-size: 100%
+  // background-size: 50% will split into 4 small picture
+  // we can use percentage to increase/ decrease background image
+  // background-size: cover is the same
+  background-size: cover;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba($color-black, 0.2);
+
+  // Book_form is the container for form component
+  // Book_form sit in the left side of .book
+  &__form {
+    width: 50%;
+    padding: 6rem;
+  }
+}
