@@ -500,6 +500,7 @@ body {
     border-radius: 3px;
     text-transform: uppercase;
     text-decoration: none;
+    padding: 1px 5px;
     transition: all 0.3s; }
   .footer__link:hover, .footer__link:active {
     color: #55c57a;
@@ -508,8 +509,7 @@ body {
   .footer__copyright {
     border-top: 1px solid #777;
     padding-top: 2rem;
-    display: inline-block;
-    width: 80%;
+    width: 92%;
     float: right; }
 
 .row {

@@ -40,6 +40,7 @@
       border-radius: 3px;
       text-transform: uppercase;
       text-decoration: none;
+      padding: 1px 5px;
 
       transition: all 0.3s;
     }
@@ -56,8 +57,7 @@
   &__copyright {
     border-top: 1px solid $color-gray-dark;
     padding-top: 2rem;
-    display: inline-block;
-    width: 80%;
+    width: 92%;
     float: right;
   }
 }
