@@ -1,0 +1,108 @@
+.popup {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba($color-black, 0.8);
+  z-index: 9999;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  // Hide the popup at normal state
+  opacity: 0;
+  visibility: hidden;
+
+  transition: all 0.3s;
+
+  &__content {
+    @include absoluteCenter;
+
+    background-color: $color-white;
+    box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
+    border-radius: 5px;
+    width: 75%;
+
+    // Fix overlap picture
+    overflow: hidden;
+    backface-visibility: hidden;
+
+    // Make display as table with 2 cells: popup__left and popup__right
+    display: table;
+
+    // For animation
+    transform: translate(-50%, -50%) scale(0.25);
+    opacity: 0;
+
+    // Delay 0.2s to have the black background display first
+    transition: all 0.5s 0.2s;
+  }
+
+  &__left {
+    width: 33.333333%;
+    display: table-cell;
+  }
+
+  &__right {
+    width: 66.666667%;
+    display: table-cell;
+
+    // Vertical align middle the content inside table cell
+    vertical-align: middle;
+
+    padding: 3rem 5rem;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+  }
+
+  &__text {
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
+
+    -moz-column-count: 2;
+    -moz-column-gap: 4rem; //1em = 1.4rem = 14px
+    -moz-column-rule: 1px solid $color-gray-light-1;
+    column-count: 2;
+    column-gap: 4rem; //1em = 1.4rem = 14px
+    column-rule: 1px solid $color-gray-light-1;
+
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+  // When we click the button or link that have the href attribute of "#popup"
+  &:target {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &:target &__content {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+
+  &__close {
+    &:link,
+    &:visited {
+      color: $color-gray-dark;
+      position: absolute;
+      top: 2.5rem;
+      right: 2.5rem;
+      font-size: 3rem;
+      text-decoration: none;
+      display: inline-block;
+
+      line-height: 1;
+
+      transition: all 0.3s;
+    }
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}
