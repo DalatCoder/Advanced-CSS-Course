@@ -12,8 +12,30 @@ html {
   // 62.5% of the default 16px gives 10px
 
   font-size: 62.5%;
+
+  // Response for tablet landscape
+  // Width < 1200px ?
+  @include respondFor(tab-land) {
+    font-size: 56.25%; // 1rem = 9px => 9 / 16 = 56.25%
+  }
+
+  // Response for both tablet portrait and phone
+  // Width < 900px ?
+  @include respondFor(tab-port) {
+    font-size: 50%; // 1rem = 8px => 8 / 16 = 50%
+  }
+
+  @include respondFor(big-desktop) {
+    font-size: 75%; // 1rem = 12px => 12 / 16 = 75%
+  }
 }
 
 body {
   box-sizing: border-box;
+
+  padding: 3rem;
+
+  @include respondFor(tab-port) {
+    padding: 0;
+  }
 }
