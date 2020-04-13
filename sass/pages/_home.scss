@@ -5,6 +5,10 @@
 
   // Move up a little bit to fill out the triangle shape when we clip path the header section
   margin-top: -20vh;
+
+  @include respondFor(tab-port) {
+    padding: 20rem 0;
+  }
 }
 
 // Section features belongs to home page
@@ -34,6 +38,10 @@
   & > * {
     transform: skewY(7deg);
   }
+
+  @include respondFor(tab-port) {
+    padding: 15rem 0;
+  }
 }
 
 // Section tours belongs to home page
@@ -45,6 +53,10 @@
 
   // Move up a little bit to cover the triangle shape
   margin-top: -10rem;
+
+  @include respondFor(tab-port) {
+    padding: 20rem 0 10rem 0;
+  }
 }
 
 // Section stories belongs to home page
@@ -53,6 +65,10 @@
 
   // Make this container relative to positioning its child absolutely
   position: relative;
+
+  @include respondFor(tab-port) {
+    padding: 10rem 0;
+  }
 }
 
 // Section booking tour belongs to home page
@@ -63,6 +79,10 @@
     $color-primary-light,
     $color-primary-dark
   );
+
+  @include respondFor(tab-port) {
+    padding: 15rem 0;
+  }
 }
 
 .book {
