@@ -31,6 +31,10 @@
     display: block;
     width: 90%;
 
+    @include respondFor(tab-port) {
+      width: 100%;
+    }
+
     // Style placeholder element in input
     &::-webkit-input-placeholder {
       color: $color-gray-dark-1;
@@ -79,6 +83,11 @@
     // Make two radio button sit side by side
     width: 49%;
     display: inline-block;
+
+    @include respondFor(tab-port) {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
   }
 
   &__radio-input {
