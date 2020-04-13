@@ -15,6 +15,16 @@
   // So we must manualy set skewX on each child of skewed container (.story)
   transform: skewX(-12deg);
 
+  @include respondFor(tab-port) {
+    width: 100%;
+    padding: 4rem;
+    padding-left: 7rem; // 6rem + 3rem when the circle shape moves toward the left 3 rem
+  }
+
+  @include respondFor(phone) {
+    transform: skewX(0);
+  }
+
   &__shape {
     width: 15rem;
     height: 15rem;
@@ -41,6 +51,10 @@
 
     // Define position as relative to positioning its child
     position: relative;
+
+    @include respondFor(phone) {
+      transform: translateX(-3rem) skewX(0);
+    }
   }
 
   &__img {
@@ -112,5 +126,9 @@
     // Text is a direct child of the skewed container (.story)
     // So we use skewX(12deg) to fix problem
     transform: skewX(12deg);
+
+    @include respondFor(phone) {
+      transform: skew(0);
+    }
   }
 }
