@@ -236,6 +236,8 @@
   }
 
   //@include respond(tab-port) {
+  // Applied style for cards when the screen width less than 56.25em and
+  // on the touched device
   @media only screen and (max-width: 56.25em), only screen and (hover: none) {
     height: auto;
     border-radius: 3px;
