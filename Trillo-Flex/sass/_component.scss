@@ -200,9 +200,6 @@
     /* Fill with color of its parrent */
     fill: currentColor;
   }
-
-  &__title {
-  }
 }
 
 //////////////////////////////////////////
@@ -243,7 +240,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--color-grey-light-2);
+  border-bottom: var(--line);
 
   &__heading {
     font-size: 2.25rem;
@@ -321,8 +318,17 @@
 
   transition: all 0.2s;
 
+  & span {
+    margin-left: 3px;
+    transition: margin-left 0.2s;
+  }
+
   &:hover {
     color: var(--color-grey-dark-1);
+
+    & span {
+      margin-left: 8px;
+    }
   }
 
   &:focus {
@@ -345,5 +351,143 @@
   100% {
     transform: scale(1);
     box-shadow: none;
+  }
+}
+
+//////////////////////////////////////////
+// PARAGRAPH
+.paragraph {
+  &:not(:last-of-type) {
+    margin-bottom: 2rem;
+  }
+}
+
+//////////////////////////////////////////
+// LIST
+.list {
+  list-style: none;
+  margin: 3rem 0;
+  padding: 3rem 0;
+  border-top: var(--line);
+  border-bottom: var(--line);
+
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    flex: 0 0 50%;
+    margin-bottom: 0.7rem;
+  }
+
+  /* Add svg icon before every list item */
+  &__item::before {
+    content: "";
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    margin-right: 0.7rem;
+
+    // Older browser
+    // background-image: url(../img/chevron-thin-right.svg);
+    // background-size: cover;
+
+    // Newer browser
+    background-color: var(--color-primary);
+    -webkit-mask-image: url(../img/chevron-thin-right.svg);
+    -webkit-mask-size: cover;
+    mask-image: url(../img/chevron-thin-right.svg);
+    mask-size: cover;
+  }
+}
+
+//////////////////////////////////////////
+// RECOMMEND
+.recommend {
+  font-size: 1.3rem;
+  color: var(--color-grey-dark-3);
+  display: flex;
+  align-items: center;
+
+  &__count {
+    margin-right: auto;
+  }
+
+  &__photo {
+    box-sizing: content-box;
+    height: 4rem;
+    width: 4rem;
+    border: 3px solid #fff;
+    border-radius: 50%;
+
+    &:not(:last-child) {
+      margin-right: -1.5rem;
+    }
+  }
+}
+
+//////////////////////////////////////////
+// REVIEWS
+.review {
+  background-color: #fff;
+  box-shadow: var(--shadow-light);
+  padding: 3rem;
+  margin-bottom: 3.5rem;
+  position: relative;
+
+  overflow: hidden;
+
+  &::before {
+    content: "\201C";
+    display: inline-block;
+    line-height: 1;
+
+    position: absolute;
+    top: -2.75rem;
+    left: -1rem;
+
+    font-size: 20rem;
+    font-family: sans-serif;
+    color: var(--color-grey-light-2);
+
+    z-index: 1;
+  }
+
+  &__text {
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+  }
+
+  &__photo {
+    height: 4.5rem;
+    width: 4.5rem;
+    border-radius: 50%;
+    margin-right: 1.5rem;
+  }
+
+  &__user-box {
+    margin-right: auto;
+  }
+
+  &__user-name {
+    font-size: calc(1em - 3px);
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  &__user-date {
+    font-size: calc(1em - 4px);
+    color: var(--color-grey-dark-3);
+  }
+
+  &__rating {
+    font-weight: 300;
+    font-size: 2.25rem;
+    color: var(--color-primary);
   }
 }
