@@ -1,0 +1,21 @@
+.container {
+  /*
+    If the screen width is larger than 120rem, then use 120rem
+    If the screen width is less than 120rem, then use 100% of device width
+  */
+  max-width: 120rem;
+  margin: 8rem auto;
+  background-color: var(--color-grey-light-2);
+  box-shadow: var(--shadow-dark);
+  border-radius: 5px;
+  overflow: hidden;
+
+  min-height: 50rem;
+
+  @media only screen and (max-width: $bp-largest) {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+    border-radius: 0;
+  }
+}

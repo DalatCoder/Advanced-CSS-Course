@@ -1,0 +1,22 @@
+.gallery {
+  display: flex;
+
+  &__photo {
+    width: 100%;
+    display: block;
+
+    @media only screen and (min-width: $bp-large) {
+      position: relative;
+      z-index: 10;
+
+      transform: scale(1);
+
+      transition: transform 0.5s;
+
+      &:hover {
+        z-index: 20;
+        transform: scale(1.05);
+      }
+    }
+  }
+}
