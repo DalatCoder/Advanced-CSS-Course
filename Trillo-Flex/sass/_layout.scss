@@ -7,14 +7,23 @@
   margin: 8rem auto;
   background-color: var(--color-grey-light-2);
   box-shadow: var(--shadow-dark);
+  border-radius: 5px;
+  overflow: hidden;
 
   min-height: 50rem;
 }
 
 .header {
+  /* Default font size for header element and all of its child */
+  font-size: 1.4rem;
+
   height: 7rem;
   background-color: #fff;
-  border-bottom: var(--color-grey-light-2);
+  border-bottom: 1px solid var(--color-grey-light-2);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .content {
@@ -25,10 +34,17 @@
   background-color: var(--color-grey-dark-1);
 
   flex: 0 0 18%;
+
+  // PUSH THE MENU DOWN
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .hotel-view {
   background-color: #fff;
 
   flex: 1;
+
+  height: 80rem;
 }
