@@ -48,3 +48,8 @@ body {
     [center-end]
     minmax(4rem, 1fr) [full-end];
 }
+
+::selection {
+  color: $color-secondary;
+  background-color: $color-primary;
+}
